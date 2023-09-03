@@ -18,7 +18,9 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## Usage
 
-TODO: Write usage instructions here
+    client = Pavo::Client.new(api_key: ENV["PAVO_API_KEY"])
+    client.product.list
+    client.company_information.info
 
 ## Development
 

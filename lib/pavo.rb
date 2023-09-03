@@ -3,6 +3,15 @@
 require_relative "pavo/version"
 
 module Pavo
-  class Error < StandardError; end
-  # Your code goes here...
+  autoload :Client, "pavo/client"
+  autoload :Error, "pavo/error"
+  autoload :Object, "pavo/object"
+  autoload :Resource, "pavo/resource"
+  autoload :Collection, "pavo/collection"
+
+  autoload :Product, "pavo/objects/product"
+  autoload :CompanyInformation, "pavo/objects/company_information"
+
+  autoload :ProductResource, "pavo/resources/product"
+  autoload :CompanyInformationResource, "pavo/resources/company_information.rb"
 end
