@@ -22,6 +22,10 @@ module Pavo
       VariantResource.new(self)
     end
 
+    def color
+      ColorResource.new(self)
+    end
+
     def connection
       @connection ||= Faraday.new do |conn|
         conn.url_prefix = BASE_URL
