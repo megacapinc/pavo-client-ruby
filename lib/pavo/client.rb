@@ -18,6 +18,10 @@ module Pavo
       CompanyInformationResource.new(self)
     end
 
+    def variant
+      VariantResource.new(self)
+    end
+
     def connection
       @connection ||= Faraday.new do |conn|
         conn.url_prefix = BASE_URL
