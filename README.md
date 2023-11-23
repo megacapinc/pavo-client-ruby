@@ -1,33 +1,86 @@
-# Pavo
+# Pavo API Rubygem
 
-TODO: Delete this and the text below, and describe your gem
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/pavo`. To experiment with that code, run `bin/console` for an interactive prompt.
+Rubygem for [Pavo API](https://developers.omspavo.com/) integration.
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+Add this line to your application's Gemfile:
 
-Install the gem and add to the application's Gemfile by executing:
+    gem 'pavo', github: "megacapinc/pavo-client-ruby"
 
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+And then execute:
 
-If bundler is not being used to manage dependencies, install the gem by executing:
-
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+    $ bundle
 
 ## Usage
 
-    client = Pavo::Client.new(api_key: ENV["PAVO_API_KEY"])
-    client.product.list
-    client.company_information.info
+To access the API, you'll need to create a `Pavo::Client` and pass in your API key.
 
-## Development
+```ruby
+client = Pavo::Client.new(api_key: ENV["PAVO_API_KEY"])
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+The client then gives you access to each of the resources.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+## Resources
 
-## Contributing
+The gem maps as closely as we can to the Pavo API so you can easily convert API examples to gem code. They're built using OpenStruct so you can easily access data in a Ruby-ish way.
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/pavo.
+##### Pagination
+
+ `list` endpoints return pages of results. The result object will have a `data` key to access the results, as well as metadata like `limit`, `offset` and `total` for retrieving subsets of the collection.
+ 
+```ruby
+results = client.product.list
+#=> Pavo::Collection
+
+results.data
+#=> [#<Pavo::Product>, #<Pavo::Product>]
+
+results.total
+#=> 888
+
+results.limit  # default: 10 / max: 100
+#=> 10
+
+results.offset
+#=> 0
+```
+ 
+You may also specify the value of `limit` and `offset`.
+
+```ruby
+# Retrieve the next page
+client.product.list(limit: 10, offset: 10)
+#=> Pavo::Collection
+```
+
+### Company Information
+
+```ruby
+client.company_information.info
+```
+
+### Products
+
+```ruby
+client.product.list
+```
+
+### Colors
+
+```ruby
+client.color.list
+```
+
+### Variants
+
+```ruby
+client.variant.list
+```
+
+### Customers
+
+```ruby
+client.customer.list
+```

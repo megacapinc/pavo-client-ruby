@@ -26,6 +26,18 @@ module Pavo
       ColorResource.new(self)
     end
 
+    def customer
+      CustomerResource.new(self)
+    end
+
+    def order
+      OrderResource.new(self)
+    end
+
+    def order_details
+      OrderDetailsResource.new(self)
+    end
+
     def connection
       @connection ||= Faraday.new do |conn|
         conn.url_prefix = BASE_URL
