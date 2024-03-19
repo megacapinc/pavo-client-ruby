@@ -6,8 +6,14 @@ module Pavo
       @client = client
     end
 
+    private
+
     def get_request(url, params: {}, headers: {})
       handle_response client.connection.get(url, params, default_headers.merge(headers))
+    end
+
+    def post_request(url, body:, headers: {})
+      handle_response client.connection.post(url, body, default_headers.merge(headers))
     end
 
     def default_headers
