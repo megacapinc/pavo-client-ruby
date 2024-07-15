@@ -42,6 +42,10 @@ module Pavo
       InvoiceResource.new(self)
     end 
 
+    def invoice_details
+      InvoiceDetailsResource.new(self)
+    end
+
     def connection
       @connection ||= Faraday.new do |conn|
         conn.url_prefix = BASE_URL
