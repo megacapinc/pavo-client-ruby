@@ -41,10 +41,14 @@ module Pavo
     def invoice
       InvoiceResource.new(self)
     end 
-
+    
     def invoice_details
       InvoiceDetailsResource.new(self)
     end
+
+    def shipment
+      ShipmentResource.new(self)
+    end 
 
     def connection
       @connection ||= Faraday.new do |conn|
