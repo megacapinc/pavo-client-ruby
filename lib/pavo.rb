@@ -16,6 +16,7 @@ module Pavo
   autoload :Customer, "pavo/objects/customer"
   autoload :Order, "pavo/objects/order"
   autoload :OrderDetails, "pavo/objects/order_details"
+  autoload :Invoice, "pavo/objects/invoice"
 
   autoload :ProductResource, "pavo/resources/product"
   autoload :CompanyInformationResource, "pavo/resources/company_information"
@@ -24,4 +25,5 @@ module Pavo
   autoload :CustomerResource, "pavo/resources/customer"
   autoload :OrderResource, "pavo/resources/order"
   autoload :OrderDetailsResource, "pavo/resources/order_details"
+  autoload :InvoiceResource, "pavo/resources/invoice"
 end
