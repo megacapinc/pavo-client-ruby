@@ -20,6 +20,7 @@ module Pavo
   autoload :InvoiceDetails, "pavo/objects/invoice_details"
   autoload :Shipment, "pavo/objects/shipment"
   autoload :Transaction, "pavo/objects/transaction"
+  autoload :Inventory, "pavo/objects/inventory"
 
   autoload :ProductResource, "pavo/resources/product"
   autoload :CompanyInformationResource, "pavo/resources/company_information"
@@ -32,4 +33,5 @@ module Pavo
   autoload :InvoiceDetailsResource, "pavo/resources/invoice_details"
   autoload :ShipmentResource, "pavo/resources/shipment"
   autoload :TransactionResource, "pavo/resources/transaction"
+  autoload :InventoryResource, "pavo/resources/inventory"
 end

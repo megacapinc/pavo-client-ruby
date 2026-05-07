@@ -52,7 +52,11 @@ module Pavo
 
     def transaction
       TransactionResource.new(self)
-    end 
+    end
+
+    def inventory
+      InventoryResource.new(self)
+    end
 
     def connection
       @connection ||= Faraday.new do |conn|
